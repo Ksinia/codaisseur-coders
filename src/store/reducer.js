@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import developers from "./developers/reducer";
 
 export default combineReducers({
-  // we can add "slice" subreducers here later on...
+  developers
 });
