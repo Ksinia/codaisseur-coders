@@ -1,17 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import api from "../api";
-import developersFetched from "../store/developers/actions";
+import { fetchDevelopers } from "../store/developers/actions";
 import Developer from "./Developer";
 
 // The "unconnected" inner component:
 class DevelopersList extends React.Component {
   componentDidMount() {
-    // Do the data fetch...
-    api("/developers").then(data => {
-      // Tell the Redux store the data has been fetched
-      this.props.dispatch(developersFetched(data));
-    });
+    // dispatch the "thunk" (function) itself
+    this.props.dispatch(fetchDevelopers);
+    console.log("this should happen first");
   }
 
   render() {
