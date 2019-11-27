@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import Toolbar from "./components/Toolbar";
 import PostPage from "./components/PostPage";
+import LoginPage from "./components/LoginPage";
 
 import "./App.css";
 
@@ -13,10 +14,12 @@ function App() {
     <div className="App">
       <Toolbar />
       <Switch>
+        {/* свитч выбирает первый подходящиц путь (не exact path), поэтому путь "/" должен быть последним */}
         <Route path="/developers" component={DevelopersList} />
-        <Route component={Homepage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/read/:id" component={PostPage} />
+        <Route path="/" component={Homepage} />
       </Switch>
-      <Route path="/read/:id" component={PostPage} />
     </div>
   );
 }

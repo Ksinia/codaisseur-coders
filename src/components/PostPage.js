@@ -11,10 +11,9 @@ class PostPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.postData.post);
-    // console.log(this.props.postData.post.title);
-    if (this.props.postData.post) {
-      console.log("title", this.props.postData.post.title);
+    if (this.props.postData) {
+      console.log("props", this.props.postData);
+      console.log("comments", this.props.postData.comments);
     }
 
     return (
@@ -24,9 +23,17 @@ class PostPage extends React.Component {
           <div>
             <h1>{this.props.postData.post.title}</h1>
             <ReactMarkdown source={this.props.postData.post.content} />
-            {/* <p>{this.props.postData.post.content}</p> */}
           </div>
         )}
+        {this.props.postData.comments &&
+          this.props.postData.comments.count > 0 && (
+            <div>
+              <h2>Comments:</h2>
+              {this.props.postData.comments.rows.map(row => {
+                return <p key={row.id}>{row.text}</p>;
+              })}
+            </div>
+          )}
       </div>
     );
   }
