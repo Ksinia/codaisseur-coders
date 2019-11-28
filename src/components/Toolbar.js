@@ -21,7 +21,11 @@ class Toolbar extends Component {
         {/* {console.log(reduxState.auth.profile)} */}
         {!this.props.auth.profile && <Link to="/login">Log in</Link>}
         {!this.props.auth.profile && <Link to="/signup">Sign up</Link>}
-        {this.props.auth.profile && <p>{this.props.auth.profile.name}</p>}
+        {this.props.auth.profile && (
+          <Link to="/account/">
+            <p>{this.props.auth.profile.name}</p>
+          </Link>
+        )}
         {this.props.auth.profile && (
           <button onClick={this.handleClick}>Log out</button>
         )}
