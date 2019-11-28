@@ -1,4 +1,4 @@
-const initialState = null;
+const initialState = { posts: null, newPostId: null };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -6,6 +6,12 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         posts: action.payload
+      };
+    }
+    case "NEW_POST": {
+      return {
+        ...state,
+        newPostId: action.payload
       };
     }
 

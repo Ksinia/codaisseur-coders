@@ -1,0 +1,11 @@
+.toolbar {
+  display: flex;
+  flex-flow: row;
+  border-bottom: 0.5px solid lightgrey;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.toolbar > * {
+  margin: 0.3rem;
+}
