@@ -1,4 +1,4 @@
-const initialState = { post: null, comments: [] };
+const initialState = { post: null, comments: null };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
