@@ -72,3 +72,14 @@ export function logOut() {
     type: "auth/LOG_OUT"
   };
 }
+
+export function deleteAccount(dispatch, getState) {
+  const id = getState().auth.profile.id;
+  const jwt = getState().auth.token;
+  api(`/developers/${id}`, {
+    method: "DELETE",
+    jwt: jwt
+  })
+    .then(dispatch(logOut()))
+    .catch(err => console.log("err", err));
+}

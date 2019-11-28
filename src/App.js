@@ -8,7 +8,7 @@ import PostPage from "./components/PostPage";
 import LoginPage from "./components/LoginPage";
 import PostList from "./components/PostList";
 import SignUpPage from "./components/SignUpPage";
-import AccountPage from "./components/AccountPage"
+import AccountPage from "./components/AccountPage";
 import "./App.css";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route path="/signup" component={SignUpPage} />
         <Route path="/read/:id" component={PostPage} />
         <Route path="/read/" component={PostList} />
-        <Route path="/account/" component={AccountPage}
+        <Route path="/account/" component={AccountPage} />
         {/* <Route exact path="/" component={Homepage} /> */}
         <Route path="/" component={Homepage} />
       </Switch>
