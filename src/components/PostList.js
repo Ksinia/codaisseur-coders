@@ -13,9 +13,9 @@ class PostList extends Component {
       <div>
         <h1>Here will be a list of posts</h1>
         {this.props.posts
-          ? this.props.posts.posts.rows.map(post => {
+          ? this.props.posts.rows.map(post => {
               return (
-                <Link to={`/read/${post.id}`}>
+                <Link key={post.id} to={`/read/${post.id}`}>
                   <h2>{post.title}</h2>
                 </Link>
               );
@@ -28,7 +28,7 @@ class PostList extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    posts: reduxState.postList
+    posts: reduxState.postList.posts
   };
 }
 

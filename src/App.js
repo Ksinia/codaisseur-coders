@@ -10,6 +10,7 @@ import PostList from "./components/PostList";
 import SignUpPage from "./components/SignUpPage";
 import AccountPage from "./components/AccountPage";
 import "./App.css";
+import NewPost from "./components/NewPost";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/read/:id" component={PostPage} />
+        <Route path="/newpost" component={NewPost} />
         <Route path="/read/" component={PostList} />
         <Route path="/account/" component={AccountPage} />
         {/* <Route exact path="/" component={Homepage} /> */}

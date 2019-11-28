@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logOut } from "../store/auth/actions";
+import "./Toolbar.css";
 
 class Toolbar extends Component {
   handleClick = () => {
@@ -14,10 +15,11 @@ class Toolbar extends Component {
 
   render() {
     return (
-      <div>
+      <div class="toolbar">
         <Link to="/">Go back to the index</Link>
         <Link to="/developers/">List of developers</Link>
         <Link to="/read/">List of Posts</Link>
+        <Link to="/newpost">New post</Link>
         {/* {console.log(reduxState.auth.profile)} */}
         {!this.props.auth.profile && <Link to="/login">Log in</Link>}
         {!this.props.auth.profile && <Link to="/signup">Sign up</Link>}
