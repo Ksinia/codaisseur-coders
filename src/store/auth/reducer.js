@@ -9,6 +9,9 @@ export default function authReducer(state = initialState, action) {
       // => Ask yourself: what is action.payload?
       return action.payload;
     }
+    case "auth/LOG_OUT": {
+      return initialState;
+    }
     default: {
       return state;
     }

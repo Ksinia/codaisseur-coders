@@ -17,7 +17,6 @@ export function login(email, password) {
       .then(data => {
         api("/me", { jwt: data.jwt })
           .then(profile => {
-            console.log("profile", profile);
             dispatch(userLoggedIn(data.jwt, profile));
           })
           .catch(err => console.log("err", err));
@@ -42,5 +41,34 @@ export function userLoggedIn(token, profile) {
   return {
     type: "auth/USER_LOGGED_IN",
     payload: { token, profile }
+  };
+}
+
+export function signUp(name, email, password) {
+  return function thunk(dispatch, getState) {
+    api("/signup", {
+      method: "POST",
+      body: {
+        name: name,
+        email: email,
+        password: password
+      }
+    })
+      .then(data => {
+        api("/me", { jwt: data.jwt })
+          .then(profile => {
+            dispatch(userLoggedIn(data.jwt, profile));
+          })
+          .catch(err => console.log("err", err));
+
+        dispatch(saveAccessToken(data.jwt));
+      })
+      .catch(err => console.log("err", err));
+  };
+}
+
+export function logOut() {
+  return {
+    type: "auth/LOG_OUT"
   };
 }

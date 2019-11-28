@@ -11,7 +11,7 @@ function developersFetched(data) {
 
 //thunk
 export function fetchDevelopers(dispatch, getState) {
-  api("/developers").then(data => {
+  api("/developers?limit=100").then(data => {
     // note: just `dispatch` here now
     console.log("this should happen second");
     dispatch(developersFetched(data));
