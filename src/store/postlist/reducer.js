@@ -14,7 +14,6 @@ export default function reducer(state = initialState, action = {}) {
         newPostId: action.payload
       };
     }
-
     default:
       return state;
   }

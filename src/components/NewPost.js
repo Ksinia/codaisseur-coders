@@ -4,7 +4,7 @@ import { createPost } from "../store/postlist/actions";
 import { Link } from "react-router-dom";
 
 class NewPost extends Component {
-  state = { title: "", content: "" };
+  state = { title: "", content: "", showNewPostLink: false };
 
   handleChange = event => {
     this.setState({
@@ -16,13 +16,14 @@ class NewPost extends Component {
     event.preventDefault();
     const action = createPost(this.state.title, this.state.content);
     this.props.dispatch(action);
+    this.setState({ ...this.state, showNewPostLink: true });
   };
 
   render() {
     console.log(this.props.newPostId);
     return (
       <div>
-        {this.props.jwt && !this.props.newPostId && (
+        {this.props.jwt && !this.state.showNewPostLink && (
           <div>
             <h1>Creating a new post</h1>
             <form onSubmit={this.handleSubmit}>
@@ -50,8 +51,10 @@ class NewPost extends Component {
           </div>
         )}
         {!this.props.jwt && <Link to="/login">You have to log in</Link>}
-        {this.props.newPostId && (
-          <Link to={`/read/${this.props.newPostId}`}>Your new post</Link>
+        {this.state.showNewPostLink && (
+          <Link to={`/read/${this.props.newPostId}`}>
+            <h1>Your new post</h1>
+          </Link>
         )}
       </div>
     );
