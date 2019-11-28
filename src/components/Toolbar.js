@@ -15,7 +15,7 @@ class Toolbar extends Component {
 
   render() {
     return (
-      <div class="toolbar">
+      <div className="toolbar">
         <Link to="/">Homepage</Link>
         <Link to="/developers/">List of developers</Link>
         <Link to="/read/">List of Posts</Link>
