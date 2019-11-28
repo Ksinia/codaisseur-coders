@@ -10,6 +10,8 @@ class Toolbar extends Component {
         <br />
         <Link to="/developers/">List of developers</Link>
         <br />
+        <Link to="/read/">List of Posts</Link>
+        <br />
         {/* {console.log(reduxState.auth.profile)} */}
         {!this.props.auth.profile && <Link to="/login">Log in</Link>}
         {this.props.auth.profile && <p>{this.props.auth.profile.name}</p>}

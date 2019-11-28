@@ -6,7 +6,7 @@ import Homepage from "./components/Homepage";
 import Toolbar from "./components/Toolbar";
 import PostPage from "./components/PostPage";
 import LoginPage from "./components/LoginPage";
-
+import PostList from "./components/PostList";
 import "./App.css";
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Route path="/developers" component={DevelopersList} />
         <Route path="/login" component={LoginPage} />
         <Route path="/read/:id" component={PostPage} />
+        <Route path="/read/" component={PostList} />
         <Route path="/" component={Homepage} />
       </Switch>
     </div>
