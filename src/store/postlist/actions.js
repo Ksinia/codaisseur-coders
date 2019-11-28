@@ -1,7 +1,7 @@
 import api from "../../api";
 
 export function fetchPosts(dispatch) {
-  api(`/posts?offset=1&limit=2`)
+  api(`/posts?offset=1&limit=100`)
     .then(posts => dispatch(setPosts(posts)))
     .catch(err => console.log("err", err));
 }
