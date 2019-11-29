@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { deleteAccount, getProfile } from "../store/auth/actions";
+import { deleteAccount, changeAccount } from "../store/auth/actions";
 import { connect } from "react-redux";
+// import { changeAccount } from "../store/auth/actions";
 
 class AccountPage extends Component {
   state = {
@@ -28,7 +29,30 @@ class AccountPage extends Component {
 
   submitChange = event => {
     event.preventDefault();
-    console.log(this.state);
+    if (this.state.name) {
+      this.props.dispatch(changeAccount(this.state.name, "name"));
+    }
+    if (this.state.github) {
+      this.props.dispatch(changeAccount(this.state.github, "github_username"));
+    }
+    if (this.state.email) {
+      this.props.dispatch(changeAccount(this.state.email, "email"));
+    }
+    if (this.state.intro) {
+      this.props.dispatch(changeAccount(this.state.intro, "intro"));
+    }
+    if (this.state.website) {
+      this.props.dispatch(changeAccount(this.state.website, "website"));
+    }
+    this.setState({
+      ...this.state,
+      change: false,
+      name: "",
+      github: "",
+      email: "",
+      intro: "",
+      website: ""
+    });
   };
 
   render() {
@@ -38,7 +62,7 @@ class AccountPage extends Component {
           this.state.change ? (
             <div>
               <div>
-                <form>
+                <form onSubmit={this.submitChange}>
                   <input
                     name="name"
                     type="text"
@@ -74,7 +98,7 @@ class AccountPage extends Component {
                     value={this.state.website}
                     onChange={this.changeHandler}
                   />
-                  <button onSubmit={this.submitChange}>Submit</button>
+                  <button type="submit">Submit</button>
                 </form>
               </div>
             </div>
