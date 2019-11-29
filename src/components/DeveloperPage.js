@@ -13,11 +13,6 @@ class DeveloperPage extends Component {
     this.props.dispatch(fetchDeveloper(id));
   }
   render() {
-    console.log("render of", this.props);
-
-    {
-      this.props.profile && console.log("posts", this.props.profile);
-    }
     const {
       name,
       github_username,
@@ -42,9 +37,7 @@ class DeveloperPage extends Component {
                 {posts.length} posts by {name}
               </Link>
             ) : (
-              <p>
-                {posts.length} posts by {name}
-              </p>
+              <p>No posts by {name} yet.</p>
             )}
           </div>
         ) : (
