@@ -17,7 +17,6 @@ class PostPage extends React.Component {
   };
 
   render() {
-    this.props.currentUserProfile &&
     if (this.props.postData) {
     }
 
