@@ -4,7 +4,12 @@ import { connect } from "react-redux";
 
 class AccountPage extends Component {
   state = {
-    state: false
+    change: false,
+    name: "",
+    github: "",
+    email: "",
+    intro: "",
+    website: ""
   };
 
   clickHandler = () => {
@@ -21,53 +26,74 @@ class AccountPage extends Component {
     });
   };
 
+  submitChange = event => {
+    event.preventDefault();
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
         {this.props.profile ? (
-          <div>
-            <h1>Account Page</h1>
-            <p>Name: {this.props.profile.name}</p>
-            <p>Github username: {this.props.profile.github_username}</p>
-            <p>About me: {this.props.profile.intro}</p>
-            <p>Email: {this.props.profile.email}</p>
-            <p>Website: {this.props.profile.website}</p>
-            <button onClick={this.clickChangeHandler}>
-              Change your profile
-            </button>
-            <button onClick={this.clickHandler}>Delete your account</button>
-          </div>
+          this.state.change ? (
+            <div>
+              <div>
+                <form>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="name"
+                    value={this.state.name}
+                    onChange={this.changeHandler}
+                  />
+                  <input
+                    name="github"
+                    type="text"
+                    placeholder="github username"
+                    value={this.state.github}
+                    onChange={this.changeHandler}
+                  />
+                  <textarea
+                    name="intro"
+                    type="text"
+                    placeholder="Write something about yourself"
+                    value={this.state.intro}
+                    onChange={this.changeHandler}
+                  />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="email"
+                    value={this.state.email}
+                    onChange={this.changeHandler}
+                  />
+                  <input
+                    name="website"
+                    type="text"
+                    placeholder="website"
+                    value={this.state.website}
+                    onChange={this.changeHandler}
+                  />
+                  <button onSubmit={this.submitChange}>Submit</button>
+                </form>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <h1>Account Page</h1>
+              <p>Name: {this.props.profile.name}</p>
+              <p>Github username: {this.props.profile.github_username}</p>
+              <p>About me: {this.props.profile.intro}</p>
+              <p>Email: {this.props.profile.email}</p>
+              <p>Website: {this.props.profile.website}</p>
+              <button onClick={this.clickChangeHandler}>
+                Change your profile
+              </button>
+              <button onClick={this.clickHandler}>Delete your account</button>
+            </div>
+          )
         ) : (
           <p>You need to be logged in to see this page</p>
-        )}
-        {this.state.change ? (
-          <div>
-            <form>
-              <input
-                name="name"
-                type="text"
-                placeholder="name"
-                // value={}
-                onChange={this.changeHandler}
-              />
-              <input
-                name="github"
-                type="text"
-                placeholder="github username"
-                // value={}
-                onChange={this.changeHandler}
-              />
-              <textarea
-                name="intro"
-                type="text"
-                placeholder="intro"
-                // value={}
-                onChange={this.changeHandler}
-              />
-            </form>
-          </div>
-        ) : (
-          ""
         )}
       </div>
     );
