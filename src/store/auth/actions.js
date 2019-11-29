@@ -72,3 +72,31 @@ export function logOut() {
     type: "auth/LOG_OUT"
   };
 }
+
+export function deleteAccount(dispatch, getState) {
+  const id = getState().auth.profile.id;
+  const jwt = getState().auth.token;
+  api(`/developers/${id}`, {
+    method: "DELETE",
+    jwt: jwt
+  })
+    .then(dispatch(logOut()))
+    .catch(err => console.log("err", err));
+}
+
+export function changeAccount(changedValue, changedItem) {
+  return function thunk(dispatch, getState) {
+    const id = getState().auth.profile.id;
+    const jwt = getState().auth.token;
+
+    api(`/developers/${id}`, {
+      method: "PUT",
+      body: {
+        [changedItem]: changedValue
+      },
+      jwt: jwt
+    })
+      .then(data => dispatch(userLoggedIn(jwt, data)))
+      .catch(err => console.log("err", err));
+  };
+}
