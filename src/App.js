@@ -12,6 +12,7 @@ import AccountPage from "./components/AccountPage";
 import DeveloperPage from "./components/DeveloperPage";
 import "./App.css";
 import NewPost from "./components/NewPost";
+import SearchPostsResult from "./components/SearchPostsResult";
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
         <Route path="/developers/:developer" component={DeveloperPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
+        {/* <Route
+          path="/search?:searchtype=:keyword"
+          component={SearchPostsResult}
+        /> */}
+        <Route
+          path="/search/:searchtype/:keyword"
+          component={SearchPostsResult}
+        />
         <Route path="/read/:id" component={PostPage} />
         <Route path="/newpost" component={NewPost} />
         <Route path="/read/" component={PostList} />
