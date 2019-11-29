@@ -14,6 +14,15 @@ export default function reducer(state = initialState, action = {}) {
         newPostId: action.payload
       };
     }
+    case "POST_DELETED": {
+      return {
+        ...state,
+        posts: {
+          count: state.posts.count - 1,
+          rows: state.posts.rows.filter(row => row.id !== action.payload)
+        }
+      };
+    }
     default:
       return state;
   }

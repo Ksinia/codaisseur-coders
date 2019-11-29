@@ -4,6 +4,7 @@ import { fetchPost } from "../store/post/actions";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { deletePost } from "../store/postlist/actions";
+import NewComment from "./NewComment";
 
 class PostPage extends React.Component {
   componentDidMount() {
@@ -12,7 +13,6 @@ class PostPage extends React.Component {
     this.props.dispatch(fetchPost(post_id));
   }
   handleClick = () => {
-    console.log("delete");
     this.props.dispatch(deletePost(this.props.match.params.id));
   };
 
@@ -48,6 +48,7 @@ class PostPage extends React.Component {
               })}
             </div>
           )}
+        {this.props.currentUserProfile && <NewComment />}
       </div>
     );
   }

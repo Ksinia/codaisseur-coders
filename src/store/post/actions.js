@@ -35,3 +35,26 @@ export function setComments(comments) {
     payload: comments
   };
 }
+
+export function submitComment(commentText, postId) {
+  return function thunk(dispatch, getState) {
+    const jwt = getState().auth.token;
+    console.log("inside submit comment thunk", postId);
+    api(`/posts/${postId}/comments`, {
+      method: "POST",
+      body: {
+        text: commentText
+      },
+      jwt: jwt
+    })
+      .then(data => dispatch(commentSubmited(data, postId)))
+      .catch(err => console.log("err", err));
+  };
+}
+
+export function commentSubmited(comment) {
+  return {
+    type: "comments/COMMENT_SUBMITED",
+    payload: comment
+  };
+}
