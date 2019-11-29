@@ -43,9 +43,11 @@ class PostPage extends React.Component {
           this.props.postData.comments.count > 0 && (
             <div>
               <h2>Comments:</h2>
-              {this.props.postData.comments.rows.map(row => {
-                return <p key={row.id}>{row.text}</p>;
-              })}
+              {[...this.props.postData.comments.rows]
+                .sort((a, b) => a.id - b.id)
+                .map(row => {
+                  return <p key={row.id}>{row.text}</p>;
+                })}
             </div>
           )}
         {this.props.currentUserProfile && <NewComment />}
