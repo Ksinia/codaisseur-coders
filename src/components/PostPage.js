@@ -11,6 +11,7 @@ class PostPage extends React.Component {
   }
 
   render() {
+    console.log(this.props.postData);
     if (this.props.postData) {
       console.log("props", this.props.postData);
       console.log("comments", this.props.postData.comments);
@@ -22,6 +23,7 @@ class PostPage extends React.Component {
         {this.props.postData.post && (
           <div>
             <h1>{this.props.postData.post.title}</h1>
+            <p>By: {this.props.postData.post.developer.name}</p>
             <ReactMarkdown source={this.props.postData.post.content} />
           </div>
         )}
