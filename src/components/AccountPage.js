@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { deleteAccount, changeAccount } from "../store/auth/actions";
 import { connect } from "react-redux";
-// import { changeAccount } from "../store/auth/actions";
+import "./AccountPage.css";
 
 class AccountPage extends Component {
   state = {
@@ -61,7 +61,9 @@ class AccountPage extends Component {
         {this.props.profile ? (
           this.state.change ? (
             <div>
-              <div>
+              <div className="inputform">
+                <h1>Change Profile</h1>
+                <br />
                 <form onSubmit={this.submitChange}>
                   <input
                     name="name"
@@ -70,6 +72,7 @@ class AccountPage extends Component {
                     value={this.state.name}
                     onChange={this.changeHandler}
                   />
+                  <br />
                   <input
                     name="github"
                     type="text"
@@ -77,6 +80,7 @@ class AccountPage extends Component {
                     value={this.state.github}
                     onChange={this.changeHandler}
                   />
+                  <br />
                   <textarea
                     name="intro"
                     type="text"
@@ -84,6 +88,7 @@ class AccountPage extends Component {
                     value={this.state.intro}
                     onChange={this.changeHandler}
                   />
+                  <br />
                   <input
                     name="email"
                     type="email"
@@ -91,6 +96,7 @@ class AccountPage extends Component {
                     value={this.state.email}
                     onChange={this.changeHandler}
                   />
+                  <br />
                   <input
                     name="website"
                     type="text"
@@ -98,6 +104,7 @@ class AccountPage extends Component {
                     value={this.state.website}
                     onChange={this.changeHandler}
                   />
+                  <br />
                   <button type="submit">Submit</button>
                 </form>
               </div>
