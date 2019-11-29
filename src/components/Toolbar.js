@@ -15,21 +15,26 @@ class Toolbar extends Component {
 
   render() {
     return (
-      <div class="toolbar">
-        <Link to="/">Go back to the index</Link>
+      <div className="toolbar">
+        <Link to="/">Homepage</Link>
         <Link to="/developers/">List of developers</Link>
         <Link to="/read/">List of Posts</Link>
         <Link to="/newpost">New post</Link>
         {/* {console.log(reduxState.auth.profile)} */}
-        {!this.props.auth.profile && <Link to="/login">Log in</Link>}
         {!this.props.auth.profile && <Link to="/signup">Sign up</Link>}
-        {this.props.auth.profile && (
+
+      
+
+        {!this.props.auth.profile && <Link to="/login">Log in</Link>}
+         {this.props.auth.profile && (
           <Link to="/account/">
             <p>{this.props.auth.profile.name}</p>
           </Link>
         )}
         {this.props.auth.profile && (
-          <button onClick={this.handleClick}>Log out</button>
+          <Link onClick={this.handleClick} to="/login">
+            Log out
+          </Link>
         )}
       </div>
     );

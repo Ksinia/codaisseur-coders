@@ -38,3 +38,21 @@ export function newPost(postId) {
     payload: postId
   };
 }
+
+export function deletePost(postId) {
+  return function thunk(dispatch, getState) {
+    const jwt = getState().auth.token;
+    api(`/posts/${postId}`, {
+      method: "DELETE",
+      jwt: jwt
+    })
+      .then(data => dispatch(postDeleted(data.id)))
+      .catch(err => console.log("err", err));
+  };
+}
+
+export function postDeleted(postId) {
+  return {
+    type: "POST_DELETED"
+  };
+}
