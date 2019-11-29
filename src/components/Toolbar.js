@@ -21,10 +21,15 @@ class Toolbar extends Component {
         <Link to="/read/">List of Posts</Link>
         <Link to="/newpost">New post</Link>
         {!this.props.auth.profile && <Link to="/signup">Sign up</Link>}
-        {this.props.auth.profile && (
+
+        
+      {this.props.auth.profile && (
           <Link to="/account/">{this.props.auth.profile.name}</Link>
+
         )}
+
         {!this.props.auth.profile && <Link to="/login">Log in</Link>}
+         
         {this.props.auth.profile && (
           <Link onClick={this.handleClick} to="/login">
             Log out
