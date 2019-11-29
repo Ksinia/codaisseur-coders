@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchPost } from "../store/post/actions";
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
+import { deletePost } from "../store/postlist/actions";
 
 class PostPage extends React.Component {
   componentDidMount() {
@@ -9,12 +11,14 @@ class PostPage extends React.Component {
     console.log("Now let's fetch this post:", post_id);
     this.props.dispatch(fetchPost(post_id));
   }
+  handleClick = () => {
+    console.log("delete");
+    this.props.dispatch(deletePost(this.props.match.params.id));
+  };
 
   render() {
-    console.log(this.props.postData);
+    this.props.currentUserProfile &&
     if (this.props.postData) {
-      console.log("props", this.props.postData);
-      console.log("comments", this.props.postData.comments);
     }
 
     return (
@@ -23,8 +27,17 @@ class PostPage extends React.Component {
         {this.props.postData.post && (
           <div>
             <h1>{this.props.postData.post.title}</h1>
-            <p>By: {this.props.postData.post.developer.name}</p>
+            {this.props.postData.post.developer && (
+              <p>By: {this.props.postData.post.developer.name}</p>
+            )}
             <ReactMarkdown source={this.props.postData.post.content} />
+            {this.props.currentUserProfile &&
+              this.props.postData.post.developer.id ===
+                this.props.currentUserProfile.id && (
+                <Link onClick={this.handleClick} to="/read/">
+                  Delete this post
+                </Link>
+              )}
           </div>
         )}
         {this.props.postData.comments &&
@@ -43,7 +56,8 @@ class PostPage extends React.Component {
 
 function mapStateToProps(reduxState) {
   return {
-    postData: reduxState.postData
+    postData: reduxState.postData,
+    currentUserProfile: reduxState.auth.profile
   };
 }
 
