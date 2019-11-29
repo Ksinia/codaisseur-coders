@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchDevelopers } from "../store/developers/actions";
 import Developer from "./Developer";
+import { Link } from "react-router-dom";
 
 // The "unconnected" inner component:
 class DevelopersList extends React.Component {
@@ -24,7 +25,9 @@ class DevelopersList extends React.Component {
             <ul>
               {this.props.devs.rows.map(dev => {
                 return (
-                  <Developer key={dev.id} name={dev.name} email={dev.email} />
+                  <Link to={`/developers/${dev.id}`}>
+                    <Developer key={dev.id} name={dev.name} email={dev.email} />
+                  </Link>
                 );
               })}
             </ul>
@@ -42,7 +45,7 @@ class DevelopersList extends React.Component {
 function mapStateToProps(reduxState) {
   // console.log("redux state?", reduxState);
   return {
-    devs: reduxState.developers
+    devs: reduxState.developers.developers
   };
 }
 // ...which is what we export as the default (only) export

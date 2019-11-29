@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { deleteAccount, changeAccount } from "../store/auth/actions";
 import { connect } from "react-redux";
-import "./AccountPage.css";
 
 class AccountPage extends Component {
   state = {

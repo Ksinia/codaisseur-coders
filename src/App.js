@@ -9,6 +9,7 @@ import LoginPage from "./components/LoginPage";
 import PostList from "./components/PostList";
 import SignUpPage from "./components/SignUpPage";
 import AccountPage from "./components/AccountPage";
+import DeveloperPage from "./components/DeveloperPage";
 import "./App.css";
 import NewPost from "./components/NewPost";
 
@@ -18,7 +19,8 @@ function App() {
       <Toolbar />
       <Switch>
         {/* свитч выбирает первый подходящиц путь (не exact path), поэтому путь "/" должен быть последним. Или можно просто написать exact path*/}
-        <Route path="/developers" component={DevelopersList} />
+        <Route exact path="/developers/" component={DevelopersList} />
+        <Route path="/developers/:developer" component={DeveloperPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/read/:id" component={PostPage} />

@@ -17,3 +17,18 @@ export function fetchDevelopers(dispatch, getState) {
     dispatch(developersFetched(data));
   });
 }
+
+export function fetchDeveloper(id) {
+  return function thunk(dispatch, getState) {
+    api(`/developers/${id}`)
+      .then(currentDeveloper => dispatch(sendDeveloper(currentDeveloper)))
+      .catch(err => console.log("err", err));
+  };
+}
+
+export function sendDeveloper(developer) {
+  return {
+    type: "developers/DEVELOPER",
+    payload: developer
+  };
+}
