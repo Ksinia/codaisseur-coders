@@ -25,8 +25,8 @@ class DevelopersList extends React.Component {
             <ul>
               {this.props.devs.rows.map(dev => {
                 return (
-                  <Link to={`/developers/${dev.id}`}>
-                    <Developer key={dev.id} name={dev.name} email={dev.email} />
+                  <Link key={dev.id} to={`/developers/${dev.id}`}>
+                    <Developer name={dev.name} email={dev.email} />
                   </Link>
                 );
               })}
