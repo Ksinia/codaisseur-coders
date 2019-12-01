@@ -26,18 +26,18 @@ class Likes extends Component {
           }, false) ? (
             <p>
               <img src={filledheart} onClick={this.dislikeClickHandler} />
-              {this.props.liked.length}
+              {this.props.liked.filter(like => like.developer).length}
             </p>
           ) : (
             <p>
               <img src={emptyheart} onClick={this.likeClickHandler} />
-              {this.props.liked.length}
+              {this.props.liked.filter(like => like.developer).length}
             </p>
           )
         ) : (
           <p>
             <img src={emptyheart} />
-            {this.props.liked.length}
+            {this.props.liked.filter(like => like.developer).length}
           </p>
         )}
       </div>
