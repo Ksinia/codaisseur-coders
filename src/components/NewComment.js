@@ -4,12 +4,14 @@ import { submitComment } from "../store/post/actions";
 import { connect } from "react-redux";
 
 class NewComment extends Component {
-  state = { newComment: "" };
+  initialState = { newComment: "" };
+  state = this.initialState;
   handleSubmit = event => {
     event.preventDefault();
     this.props.dispatch(
       submitComment(this.state.newComment, this.props.postData.post.id)
     );
+    this.setState(this.initialState);
   };
   handleChange = event => {
     this.setState({

@@ -58,3 +58,23 @@ export function commentSubmited(comment) {
     payload: comment
   };
 }
+
+export function clearPostandComments() {
+  return {
+    type: "post/CLEAR"
+  };
+}
+
+export function deleteComment(postId, commentId) {
+  return function thunk(dispatch, getState) {
+    const jwt = getState().auth.token;
+    console.log("We need api endpoint for deleting a comment");
+    dispatch(commentDeleted(commentId));
+  };
+}
+export function commentDeleted(commentId) {
+  return {
+    type: "comments/COMMENT_DELETED",
+    payload: commentId
+  };
+}

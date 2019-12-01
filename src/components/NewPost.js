@@ -27,23 +27,25 @@ class NewPost extends Component {
           <div>
             <h1>Creating a new post</h1>
             <form onSubmit={this.handleSubmit}>
-              <p>
-                <label>Title</label>
+              <div>
+                <label htmlFor="title">Title: </label>
                 <input
+                  id="title"
                   type="text"
                   name="title"
                   value={this.state.title}
                   onChange={this.handleChange}
                 />
-              </p>
-              <p>
-                <label>Content</label>
+              </div>
+              <div>
+                <label htmlFor="content">Content: </label>
                 <textarea
+                  id="content"
                   name="content"
                   value={this.state.content}
                   onChange={this.handleChange}
                 />
-              </p>
+              </div>
               <p>
                 <button type="submit">Post</button>
               </p>

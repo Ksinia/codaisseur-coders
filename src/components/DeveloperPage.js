@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchDeveloper } from "../store/developers/actions";
+import {
+  fetchDeveloper,
+  clearCurrentDeveloper
+} from "../store/developers/actions";
 import { Link } from "react-router-dom";
 
 class DeveloperPage extends Component {
-  // functionForStrangePurpose () {
-  //   const id = this.props.match.params.developer;
-
-  // }
   componentDidMount() {
     const id = this.props.match.params.developer;
+    this.props.dispatch(clearCurrentDeveloper());
     this.props.dispatch(fetchDeveloper(id));
   }
   render() {
@@ -27,15 +27,23 @@ class DeveloperPage extends Component {
         {this.props.profile.currentDeveloper.name ? (
           <div>
             <h1>{name}</h1>
-            <p>Name: {name}</p>
-            <p>Github username: {github_username}</p>
+            {/* <p>Name: {name}</p>  we already have name in the header*/}
+            <p>
+              Github username:{" "}
+              <a href={`https://github.com/${github_username}`}>
+                {github_username}
+              </a>
+            </p>
             <p>About me: {intro}</p>
-            <p>Email: {email}</p>
-            <p>Website: {website}</p>
+            {this.props.loggedin && <p>Email: {email}</p>}
+            <p>
+              Website: <a href={website}>{website}</a>
+            </p>
             {posts.length > 0 ? (
-              <Link to={`/search/author/${id}`}>
-                {posts.length} posts by {name}
-              </Link>
+              <p>
+                <Link to={`/search/author/${id}`}>{posts.length} posts </Link>by{" "}
+                {name}
+              </p>
             ) : (
               <p>No posts by {name} yet.</p>
             )}
@@ -50,7 +58,8 @@ class DeveloperPage extends Component {
 
 function mapStateToProps(reduxState) {
   return {
-    profile: reduxState.developers
+    profile: reduxState.developers,
+    loggedin: Boolean(reduxState.auth.profile)
   };
 }
 

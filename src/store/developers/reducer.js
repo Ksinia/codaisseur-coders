@@ -9,6 +9,12 @@ export default function reducer(state = initialState, action) {
     case "developers/DEVELOPER": {
       return { ...state, currentDeveloper: action.payload };
     }
+    case "developers/CLEAR_CURRENT_DEVELOPER": {
+      return {
+        ...state,
+        currentDeveloper: {}
+      };
+    }
     default: {
       return state;
     }
