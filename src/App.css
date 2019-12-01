@@ -25,3 +25,27 @@
 a {
   font-weight: bold;
 }
+
+.main-section {
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+}
+
+.search-panel {
+  /* position: absolute; */
+  left: 10rem;
+  text-align: left;
+  min-width: 15%;
+  margin: 2rem;
+}
+
+.main-part {
+  position: center;
+  max-width: 60%;
+}
+.left-panel-form {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 2rem;
+}
