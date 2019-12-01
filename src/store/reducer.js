@@ -8,15 +8,11 @@ import likes from "../store/likes/reducer";
 
 import searchedPosts from "./searchPosts/reducer";
 
-
 export default combineReducers({
   developers,
   postData: post,
   auth: authReducer,
   postList: postList,
-
-  likedness: likes
-
+  likedness: likes,
   searchResults: searchedPosts
-
 });
