@@ -4,6 +4,7 @@ import { fetchPost } from "../store/post/actions";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { deletePost } from "../store/postlist/actions";
+import Likes from "./Likes";
 
 class PostPage extends React.Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class PostPage extends React.Component {
               <p>By: {this.props.postData.post.developer.name}</p>
             )}
             <ReactMarkdown source={this.props.postData.post.content} />
+            <Likes />
             {this.props.currentUserProfile &&
               this.props.postData.post.developer.id ===
                 this.props.currentUserProfile.id && (
