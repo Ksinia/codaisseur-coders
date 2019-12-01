@@ -3,6 +3,9 @@ import developers from "./developers/reducer";
 import post from "./post/reducer";
 import postList from "../store/postlist/reducer";
 import authReducer from "./auth/reducer";
+
+import likes from "../store/likes/reducer";
+
 import searchedPosts from "./searchPosts/reducer";
 
 export default combineReducers({
@@ -10,5 +13,6 @@ export default combineReducers({
   postData: post,
   auth: authReducer,
   postList: postList,
+  likedness: likes,
   searchResults: searchedPosts
 });

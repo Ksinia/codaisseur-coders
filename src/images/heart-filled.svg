@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="22px" viewBox="0 0 25 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>heart-filled</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M96.0658333,158.881988 C94.7763889,157.627329 93.0863889,157 91.3961111,157 C89.7061111,157 88.0161111,157.627329 86.7266667,158.881988 L85.5,160.075562 L84.2733333,158.881988 C82.9838889,157.627329 81.2938889,157 79.6038889,157 C77.9136111,157 76.2236111,157.627329 74.9341667,158.881988 C72.3552778,161.391304 72.3552778,165.45989 74.9341667,167.969207 L85.5,178.25 L96.0658333,167.969207 C98.6447222,165.45989 98.6447222,161.391304 96.0658333,158.881988" id="path-1"></path>
+    </defs>
+    <g id="BNNVARA-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-73.000000, -157.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="heart-filled" fill="#D0021B" fill-rule="nonzero" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

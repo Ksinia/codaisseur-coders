@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="24px" viewBox="0 0 27 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>path-1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-72.000000, -57.000000)" fill-rule="nonzero" stroke="#D0021B" stroke-width="2">
+            <g id="heart-filled" transform="translate(73.000000, 58.000000)">
+                <path d="M23.0658333,1.881988 C21.7763889,0.627329 20.0863889,0 18.3961111,0 C16.7061111,0 15.0161111,0.627329 13.7266667,1.881988 L12.5,3.075562 L11.2733333,1.881988 C9.9838889,0.627329 8.2938889,0 6.6038889,0 C4.9136111,0 3.2236111,0.627329 1.9341667,1.881988 C-0.6447222,4.391304 -0.6447222,8.45989 1.9341667,10.969207 L12.5,21.25 L23.0658333,10.969207 C25.6447222,8.45989 25.6447222,4.391304 23.0658333,1.881988" id="path-1"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,8 +4,12 @@ import { fetchPost, deleteComment } from "../store/post/actions";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import { deletePost } from "../store/postlist/actions";
+
+import Likes from "./Likes";
+
 import NewComment from "./NewComment";
 import { clearPostandComments } from "../store/post/actions";
+
 
 class PostPage extends React.Component {
   componentDidMount() {
@@ -43,6 +47,7 @@ class PostPage extends React.Component {
               </p>
             )}
             <ReactMarkdown source={this.props.postData.post.content} />
+            <Likes />
             {this.props.currentUserProfile &&
               this.props.postData.post.developer &&
               this.props.postData.post.developer.id ===
