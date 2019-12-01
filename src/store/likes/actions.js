@@ -27,5 +27,6 @@ export function Dislike(dispatch, getState) {
     jwt: jwt
   })
     .then(data => console.log("data", data))
+    .then(dispatch(fetchPost(id)))
     .catch(err => console.log("err", err));
 }
