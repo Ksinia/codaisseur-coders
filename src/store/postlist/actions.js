@@ -53,6 +53,7 @@ export function deletePost(postId) {
 
 export function postDeleted(postId) {
   return {
-    type: "POST_DELETED"
+    type: "POST_DELETED",
+    payload: postId
   };
 }

@@ -32,3 +32,9 @@ export function sendDeveloper(developer) {
     payload: developer
   };
 }
+
+export function clearCurrentDeveloper() {
+  return {
+    type: "developers/CLEAR_CURRENT_DEVELOPER"
+  };
+}

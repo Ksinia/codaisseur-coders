@@ -4,7 +4,7 @@ function Developer(props) {
   return (
     <div>
       <p>{props.name}</p>
-      <p>{props.email}</p>
+      {/* <p>{props.email}</p> */}
     </div>
   );
 }

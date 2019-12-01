@@ -23,13 +23,31 @@ class DevelopersList extends React.Component {
           <div>
             <p>We have {this.props.devs.count} developers!</p>
             <ul>
-              {this.props.devs.rows.map(dev => {
-                return (
-                  <Link to={`/developers/${dev.id}`}>
-                    <Developer key={dev.id} name={dev.name} email={dev.email} />
-                  </Link>
-                );
-              })}
+              {[...this.props.devs.rows]
+                .sort(function(a, b) {
+                  var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                  var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                  if (nameA < nameB) {
+                    return -1;
+                  }
+                  if (nameA > nameB) {
+                    return 1;
+                  }
+
+                  // names must be equal
+                  return 0;
+                })
+                //   this.props.devs.rows
+                .map(dev => {
+                  return (
+                    <Link key={dev.id} to={`/developers/${dev.id}`}>
+                      <Developer
+                        name={dev.name}
+                        // email={dev.email}  // don't show emails to everyone. Show emails only on detail page and when user is logged in
+                      />
+                    </Link>
+                  );
+                })}
             </ul>
           </div>
         )}

@@ -6,15 +6,13 @@ import { Link } from "react-router-dom";
 class LoginPage extends React.Component {
   state = {
     email: "",
-    password: "",
-    loggedin: false
+    password: ""
   };
 
   handleSubmit = event => {
     event.preventDefault();
     const action = login(this.state.email, this.state.password); // series of actions
     this.props.dispatch(action); // little bit of magic. Thanks Dan Abramov
-    this.setState({ ...this.state, loggedin: true });
   };
 
   handleChange = event => {
@@ -26,7 +24,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loggedin ? (
+        {this.props.loggedin ? (
           <div>
             <h1>You have succesfully logged in!</h1>
             <Link to="/account/">Account Page</Link>
@@ -35,22 +33,26 @@ class LoginPage extends React.Component {
           <div>
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>
-              <p>
+              <div>
+                <label htmlFor="email">E-mail: </label>
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   value={this.state.email}
                   onChange={this.handleChange}
                 />
-              </p>
-              <p>
+              </div>
+              <div>
+                <label htmlFor="password">Password: </label>
                 <input
+                  id="password"
                   type="password"
                   name="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
-              </p>
+              </div>
               <p>
                 <button type="submit">Login</button>
               </p>
@@ -61,6 +63,11 @@ class LoginPage extends React.Component {
     );
   }
 }
+function mapStateToProps(reduxState) {
+  return {
+    loggedin: Boolean(reduxState.auth.profile)
+  };
+}
 // we need this because we need to use dispatch, but we don't need mapStateToProps,
 // because we don't use any info from state. So we don't put anything inside the paranthesis
-export default connect()(LoginPage);
+export default connect(mapStateToProps)(LoginPage);

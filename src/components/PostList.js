@@ -11,15 +11,17 @@ class PostList extends Component {
   render() {
     return (
       <div>
-        <h1>Here will be a list of posts</h1>
+        <h1>All posts</h1>
         {this.props.posts
-          ? this.props.posts.rows.map(post => {
-              return (
-                <Link key={post.id} to={`/read/${post.id}`}>
-                  <h2>{post.title}</h2>
-                </Link>
-              );
-            })
+          ? [...this.props.posts.rows]
+              .sort((a, b) => a.id - b.id)
+              .map(post => {
+                return (
+                  <Link key={post.id} to={`/read/${post.id}`}>
+                    <h2>{post.title}</h2>
+                  </Link>
+                );
+              })
           : "Loading..."}
       </div>
     );
